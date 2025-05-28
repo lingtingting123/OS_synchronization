@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Dining-Philosophers Ring</title>
+<style>
+  :root{
+    --fork-radius: 140px;     /* 内圈：叉子的半径 */
+    --phil-radius: 200px;     /* 外圈：哲学家的半径 = 叉子 + 60 */
+  }
+  *{box-sizing:border-box}
+  body{display:flex;justify-content:center;align-items:center;
+       height:100vh;margin:0;font-family:sans-serif;}
+
+  #ring{position:relative;width:calc(var(--phil-radius)*2);
+        height:calc(var(--phil-radius)*2);}
+
+  /* 通用按钮基样式 */
+  button{
+    position:absolute;top:50%;left:50%;
+    width:80px;height:40px;margin:-20px 0 0 -40px;
+    border:none;border-radius:20px;cursor:pointer;
+    transition:background .3s;
+  }
+  /* 叉子亮（有人占用）时的颜色 */
+  .fork.active{background:#2ca02c;color:#fff}
+  /* 默认外观 */
+  .fork{background:#eee}
+  .phil{background:#d8d8ff}          /* 可以自行换色 */
+</style>
+</head>
+<body>
+<div id="ring"></div>
+
+<script>
+const ring = document.getElementById('ring');
+const N = 5;                                // 5 个叉子 / 5 位哲学家
+const forkState = Array(N).fill(false);     // false=空闲 true=占用
+
+/* ---------- 生成叉子 ---------- */
+for(let i=0;i<N;i++){
+  const btn = document.createElement('button');
+  btn.textContent = `Fork ${i+1}`;
+  btn.className = 'fork';
+  const deg = 360/N*i - 90;                 // 叉子角度（-90 让 Fork1 从正上开始）
+  btn.style.transform =
+    `rotate(${deg}deg) translate(var(--fork-radius)) rotate(${-deg}deg)`;
+
+  btn.onclick = () => {
+    forkState[i] = !forkState[i];
+    btn.classList.toggle('active', forkState[i]);
+    console.log(`Fork ${i+1}:`, forkState[i] ? '占用' : '空闲');
+  };
+  ring.appendChild(btn);
+}
+
+/* ---------- 生成哲学家 ---------- */
+for(let i=0;i<N;i++){
+  const p = document.createElement('button');
+  p.textContent = `P${i+1}`;
+  p.className = 'phil';
+  /* 每位哲学家位于相邻两叉子中点 => 角度再加半个间隔 (= 360/ (2N) ) */
+  const deg = 360/N*i + 360/(2*N) - 90;     // 同样让 P1 在 Fork1 左侧开始
+  p.style.transform =
+    `rotate(${deg}deg) translate(var(--phil-radius)) rotate(${-deg}deg)`;
+  ring.appendChild(p);
+}
+</script>
+</body>
+</html>

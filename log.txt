@@ -1,0 +1,50 @@
+
+===== Starting 5 threads =====
+[22:34:39] Reader 1: Waiting for 3.0 seconds
+[22:34:39] Reader 3: Waiting for 5.0 seconds
+[22:34:39] Reader 4: Waiting for 6.0 seconds
+[22:34:39] Writer 2: Waiting for 4.0 seconds
+[22:34:39] Writer 5: Waiting for 5.1 seconds
+[22:34:42] Reader 1: Trying to enter queue
+[22:34:42] Reader 1: Entered queue
+[22:34:42] Reader 1: First reader, acquiring fmutex
+[22:34:42] Reader 1: Total readers now: 1
+[22:34:42] Reader 1: Released queue
+[22:34:42] Reader 1: STARTED reading (will take 5.0 seconds)
+[22:34:43] Writer 2: First writer, acquiring queue
+[22:34:43] Writer 2: Total writers now: 1
+[22:34:43] Writer 2: Trying to acquire fmutex
+[22:34:44] Reader 3: Trying to enter queue
+[22:34:45] Writer 5: Total writers now: 2
+[22:34:45] Writer 5: Trying to acquire fmutex
+[22:34:45] Reader 4: Trying to enter queue
+[22:34:47] Reader 1: FINISHED reading
+[22:34:47] Reader 1: Left reading, readers now: 0
+[22:34:47] Reader 1: Last reader, releasing fmutex
+[22:34:47] Writer 2: Acquired fmutex
+[22:34:47] Writer 2: STARTED writing (will take 5.0 seconds)
+[22:34:52] Writer 2: FINISHED writing
+[22:34:52] Writer 2: Released fmutex
+[22:34:52] Writer 2: Left writing, writers now: 1
+[22:34:52] Writer 5: Acquired fmutex
+[22:34:52] Writer 5: STARTED writing (will take 3.0 seconds)
+[22:34:55] Writer 5: FINISHED writing
+[22:34:55] Writer 5: Released fmutex
+[22:34:55] Writer 5: Left writing, writers now: 0
+[22:34:55] Writer 5: Last writer, releasing queue
+[22:34:55] Reader 3: Entered queue
+[22:34:55] Reader 3: First reader, acquiring fmutex
+[22:34:55] Reader 3: Total readers now: 1
+[22:34:55] Reader 3: Released queue
+[22:34:55] Reader 3: STARTED reading (will take 2.0 seconds)
+[22:34:55] Reader 4: Entered queue
+[22:34:55] Reader 4: Total readers now: 2
+[22:34:55] Reader 4: Released queue
+[22:34:55] Reader 4: STARTED reading (will take 5.0 seconds)
+[22:34:57] Reader 3: FINISHED reading
+[22:34:57] Reader 3: Left reading, readers now: 1
+[22:35:00] Reader 4: FINISHED reading
+[22:35:00] Reader 4: Left reading, readers now: 0
+[22:35:00] Reader 4: Last reader, releasing fmutex
+
+===== All threads completed =====

@@ -1,0 +1,46 @@
+[20:42:30] Producer 1: Waiting for 3.0 seconds before starting
+[20:42:30] Producer 4: Waiting for 6.0 seconds before starting
+[20:42:30] Producer 3: Waiting for 5.0 seconds before starting
+[20:42:30] Consumer 5: Waiting for 5.1 seconds before starting
+[20:42:30] Consumer 2: Waiting for 4.0 seconds before starting
+[20:42:33] Producer 1: Started
+[20:42:33] Producer 1: Waiting for empty slot
+[20:42:33] Producer 1: Trying to acquire buffer lock
+[20:42:33] Producer 1: Acquired buffer lock
+[20:42:34] Consumer 2: Started
+[20:42:34] Consumer 2: Waiting for full slot
+[20:42:35] Producer 3: Started
+[20:42:35] Producer 3: Waiting for empty slot
+[20:42:35] Producer 3: Trying to acquire buffer lock
+[20:42:35] Consumer 5: Started
+[20:42:35] Consumer 5: Waiting for full slot
+[20:42:36] Producer 4: Started
+[20:42:36] Producer 4: Waiting for empty slot
+[20:42:36] Producer 4: Trying to acquire buffer lock
+[20:42:38] Producer 1: Produced item 83, buffer count: 1
+[20:42:38] Producer 1: Released buffer lock
+[20:42:38] Producer 1: Signaled full semaphore
+Producer 1: Finished
+[20:42:38] Producer 3: Acquired buffer lock
+[20:42:38] Consumer 2: Trying to acquire buffer lock
+[20:42:40] Producer 3: Produced item 86, buffer count: 2
+[20:42:40] Producer 3: Released buffer lock
+[20:42:40] Producer 3: Signaled full semaphore
+Producer 3: Finished
+[20:42:40] Producer 4: Acquired buffer lock
+[20:42:40] Consumer 5: Trying to acquire buffer lock
+[20:42:45] Producer 4: Produced item 77, buffer count: 3
+[20:42:45] Producer 4: Released buffer lock
+[20:42:45] Producer 4: Signaled full semaphore
+Producer 4: Finished
+[20:42:45] Consumer 2: Acquired buffer lock
+[20:42:50] Consumer 2: Consumed item 83, buffer count: 2
+[20:42:50] Consumer 2: Released buffer lock
+[20:42:50] Consumer 2: Signaled empty semaphore
+Consumer 2: Finished
+[20:42:50] Consumer 5: Acquired buffer lock
+[20:42:53] Consumer 5: Consumed item 86, buffer count: 1
+[20:42:53] Consumer 5: Released buffer lock
+[20:42:53] Consumer 5: Signaled empty semaphore
+Consumer 5: Finished
+All threads completed. Program finished.
